@@ -24,7 +24,9 @@ for part in ADMIN_ID_RAW.split(","):
 if not BOT_TOKEN:
     raise RuntimeError("BOT_TOKEN is required")
 
-bot = Bot(BOT_TOKEN, parse_mode="HTML")
+from aiogram.client.default import DefaultBotProperties  # додай цей імпорт поруч з іншими
+
+bot = Bot(BOT_TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
 dp = Dispatcher()
 
 app = FastAPI()
