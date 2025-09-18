@@ -7,6 +7,7 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 from dotenv import load_dotenv
 
 from db import query, execute, tx
+from aiogram.client.default import DefaultBotProperties  
 
 load_dotenv()
 
@@ -23,8 +24,6 @@ for part in ADMIN_ID_RAW.split(","):
 
 if not BOT_TOKEN:
     raise RuntimeError("BOT_TOKEN is required")
-
-from aiogram.client.default import DefaultBotProperties  # додай цей імпорт поруч з іншими
 
 bot = Bot(BOT_TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
 dp = Dispatcher()
